@@ -16,6 +16,7 @@ class Prompt(BaseModel):
     base_filename: str
     prompt: str
     init_image: Optional[Path] = None
+    mask: Optional[Path] = None
     init_strength: Optional[float] = None
 
 
