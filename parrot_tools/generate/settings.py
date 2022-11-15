@@ -77,7 +77,7 @@ class RunSettings(BaseModel):
 
     @property
     def grid_path(self) -> Path:
-        return self.images_out_path / "grids"
+        return self.batch.base_path / self.batch.batch_name / "grids"
 
     def get_grid_image_path(self, *, run_id: int, grid_num: int) -> Path:
         return (
