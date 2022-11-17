@@ -15,10 +15,17 @@ class Prompt(BaseModel):
     folder_name: Optional[str] = None
     base_filename: str
     prompt: str
+    title: str
+    genre: str
+    tag: str
+    append_to_all_prompts: Optional[str] = ""
+    description: Optional[str] = ""
+    emotion_str: Optional[str] = ""
+    primary_color: Optional[str] = ""
+    element_str: Optional[str] = ""
     init_image: Optional[Path] = None
     mask: Optional[Path] = None
     init_strength: Optional[float] = None
-
 
 class SchedulerType(str, Enum):
     K_LMS = "k_lms"
