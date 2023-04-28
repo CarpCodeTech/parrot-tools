@@ -15,6 +15,7 @@ class Prompt(BaseModel):
     folder_name: Optional[str] = None
     base_filename: str
     prompt: str
+    negative_prompt: str
     title: str
     genre: str
     tag: str
