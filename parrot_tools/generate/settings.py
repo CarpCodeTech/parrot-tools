@@ -15,9 +15,18 @@ class Prompt(BaseModel):
     folder_name: Optional[str] = None
     base_filename: str
     prompt: str
+    negative_prompt: str
+    title: str
+    genre: str
+    tag: str
+    append_to_all_prompts: Optional[str] = ""
+    description: Optional[str] = ""
+    emotion_str: Optional[str] = ""
+    primary_color: Optional[str] = ""
+    element_str: Optional[str] = ""
     init_image: Optional[Path] = None
+    mask: Optional[Path] = None
     init_strength: Optional[float] = None
-
 
 class SchedulerType(str, Enum):
     K_LMS = "k_lms"
@@ -76,10 +85,10 @@ class RunSettings(BaseModel):
 
     @property
     def grid_path(self) -> Path:
-        return self.images_out_path / "grids"
+        return self.batch.base_path / self.batch.batch_name / "grids"
 
     def get_grid_image_path(self, *, run_id: int, grid_num: int) -> Path:
         return (
             self.grid_path
-            / f"{self.prompt.base_filename}_{run_id:0>4d}_{grid_num:0>4d}.{self.batch.image_ext}"
+            / f"{self.prompt.folder_name}_{self.prompt.base_filename}_{run_id:0>4d}_{grid_num:0>4d}.{self.batch.image_ext}"
         )
